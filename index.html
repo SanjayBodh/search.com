@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bebas+Neue&family=Cinzel&family=Gluten&family=Josefin+Slab:ital,wght@0,400;1,600&family=Lobster&family=Nanum+Myeongjo:wght@700&family=Pacifico&family=Satisfy&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <title>Hotel Search</title>
+  <style>
+html{
+scroll-behavior:smooth;
+}
+.material-symbols-outlined {
+ position:relative;
+top:2px;
+}
+video{
+height:100%;
+width:50%;
+positionfixed;
+top5%;
+display:none;
+}
+input::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Change to your desired color or filter effect */
+}
+
+input:focus {
+    outline: none;
+}
+.image img{
+position:fixed;
+width:50%;
+height90%;
+z-index:9;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+body{
+margin:0;
+padding:0;
+height:100vh;
+background-color#04364A;
+background: linear-gradient(to bottom, #04364A, #cc0000);
+overflow:hidden;
+
+}
+    .hotel-list {
+      list-style-type: none;
+ height: 650px; /* Set the desired height for the hotel list */
+width95%;
+  overflow: auto; /* Enable vertical scrolling */
+border-bottom:2px solid black;
+border-radius:0 0 20px 20px;
+}
+    input[type="text"]{
+font-size:17px;
+border:none;
+border-radius:0 0 0 10px;
+border-bottom:2px solid white;
+background-color:transparent;
+color:white;
+}
+ input[type="text"]:hover{
+border-bottom:2px solid orange;
+transition:all ease 0.5s;
+}
+.phone{
+position:fixed;
+display:flex;
+gap:1rem;
+left0;
+top:5%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+ button{
+font-size:15px;
+border-radius:5px;
+padding:5px 10px;
+color:black;
+background-color:white;
+transition:all ease 0.6s;
+border:none;
+positionfixed;
+top4%;
+left68%;
+transformtranslate(-50%,-50%);
+}
+button:hover{
+background-color:orange;
+color:white;
+}
+::placeholder{
+color:#fff;
+}
+    .hotel-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .hotel-image {
+      width: 400px;
+      height: 200px;
+      margin-right: 10px;
+border-radius:20px;
+border:2px solid black;
+    }
+.hotel-price{
+color:white;
+}
+    fieldset {
+      border: 1px solid black;
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 10px;
+width:80%;
+backdrop-filter:blur(10px);
+    }
+    legend {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+color:white;
+    }
+    .hotel-address {
+color:white;
+    }
+    .hotel-mobile {
+      font-size: 14px;
+color:white;
+    }
+   
+.searchbaar {
+position:fixed;
+left35%;
+top:5%;
+width:95%;
+top:54%;
+left:50%;
+transform:translate(-50%,-50%);
+z-index:10;
+}
+.hotelresult {
+overflow-y: scroll;
+background-colorgreen;
+position:relative;
+z-index:10;
+}
+search-input{
+position:fixed;
+left:20%;
+padding:10px;
+z-index:10;
+}
+h1{
+font-size:100px;
+color:white;
+}
+.m{
+position:absolute;
+top:65%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:150px;
+border-bottom:3px solid black;
+color:white;
+}
+.n{
+position:absolute;
+top:23%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:150px;
+border-bottom:3px solid black;
+color:white;
+}
+.v{
+position:absolute;
+top:44%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:150px;
+border-bottom:3px solid black;
+color:white;
+}
+.left-text{
+width:30%;
+border:2px solid white;
+border-radius:20px;
+padding:10px;
+position:fixed;
+top:10%;
+color:#EAD7BB;
+font-family: 'Abril Fatface', serif;
+font-family: 'Bebas Neue', sans-serif;
+font-family: 'Cinzel', serif;
+font-family: 'Gluten', cursive;
+font-family: 'Josefin Slab', serif;
+font-family: 'Lobster', sans-serif;
+font-family: 'Nanum Myeongjo', serif;
+font-family: 'Pacifico', cursive;
+font-family: 'Satisfy', cursive;
+}
+.left2-text{
+width:20%;
+height150px;
+border:2px solid white;
+border-radius:20px;
+padding:10px 100px 10px 10px;
+position:fixed;
+top:50%;
+left:5%;
+color:#FFF2D8;
+font-family: 'Abril Fatface', serif;
+font-family: 'Bebas Neue', sans-serif;
+font-family: 'Cinzel', serif;
+font-family: 'Gluten', cursive;
+font-family: 'Josefin Slab', serif;
+font-family: 'Lobster', sans-serif;
+font-family: 'Nanum Myeongjo', serif;
+font-family: 'Pacifico', cursive;
+font-family: 'Satisfy', cursive;
+}
+.right-text{
+width:20%;
+height150px;
+border:2px solid white;
+border-radius:20px;
+padding:10px 10px 10px 100px;
+position:fixed;
+top:30%;
+right:2%;
+color:#BCA37F;
+font-family: 'Abril Fatface', serif;
+font-family: 'Bebas Neue', sans-serif;
+font-family: 'Cinzel', serif;
+font-family: 'Gluten', cursive;
+font-family: 'Josefin Slab', serif;
+font-family: 'Lobster', sans-serif;
+font-family: 'Nanum Myeongjo', serif;
+font-family: 'Pacifico', cursive;
+font-family: 'Satisfy', cursive;
+}
+.bottom-text{
+display:none;
+}
+.bottom2-text{
+display:none;
+}
+ @media only screen and (max-width: 600px) {
+      fieldset {
+        padding: 5px;
+      }
+      legend {
+        font-size: 16px;
+      }
+      .hotel-image {
+        width: 80px;
+        height: 80px;
+      }
+.m{
+color:white;
+font-size:85px;
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+.n{
+font-size:85px;
+position:absolute;
+top:0;
+left:50%;
+transform:translate(-50%,-50%);
+}
+.v{
+font-size:85px;
+position:absolute;
+top:25%;
+left:50%;
+transform:translate(-50%,-50%);
+color:white;
+}
+.search-input{
+z-index:999;
+displaynone;
+}
+phone{
+position:fixed;
+display:flex;
+gap:1rem;
+left0;
+top:5%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+input[type="text"]{
+width:150px;
+font-size:20px;
+border-bottom:2px solid #04364A;
+color:black;
+}
+ button{
+font-size:17px;
+background-color:;
+padding:2px 10px;
+positiofixed;
+top11%;
+left50%;
+transformtranslate(-50%,-50%);
+z-index:999;
+}
+.hotelresult {
+overflow-y: scroll;
+background-colorgreen;
+position:relative;
+z-index:10;
+top100px;
+}
+fieldset{
+width:100%;
+displayflex;
+justify-contentcenter;
+position:relative;
+right:20px;
+background-colororange;
+}
+.hotel-image {
+      width: 220px;
+      height: 100px;
+      margin-right: 10px;
+border-radius:20px;
+border:2px solid black;
+    }
+.image img{
+position:fixed;
+width:90%;
+height90%;
+z-index:9;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+.left-text{
+display:none;
+}
+.left2-text{
+display:none;
+}
+.right-text{
+display:none;
+}
+video{
+position:fixed;
+top:5%;
+width:100%;
+height:100vh;
+display:block;
+}
+body{
+background: linear-gradient(to bottom,#FFF2D8, #04364A);
+}
+::placeholder{
+color:#04364A;
+}
+.bottom-text{
+display:block;
+font-size:12px;
+position:absolute;
+top:70%;
+left:50%;
+transform:translate(-50%,-50%);
+z-index:10;
+WIDTH:100%;
+color:white;
+font-family: 'Abril Fatface', serif;
+font-family: 'Bebas Neue', sans-serif;
+font-family: 'Cinzel', serif;
+font-family: 'DM Serif Display', serif;
+font-family: 'Gluten', cursive;
+font-family: 'Josefin Slab', serif;
+font-family: 'Lobster', sans-serif;
+font-family: 'Nanum Myeongjo', serif;
+font-family: 'Pacifico', cursive;
+font-family: 'Satisfy', cursive;
+}
+.bottom2-text{
+display:block;
+font-size:11px;
+position:absolute;
+top:90%;
+left:50%;
+transform:translate(-50%,-50%);
+z-index:10;
+color:white;
+width:100%;
+font-family: 'Playfair Display', serif;
+}
+#move{
+position:relative;
+top:5px;
+}
+    }
+  </style>
+</head>
+<body>
+<div class="search-input">
+  <input type="text" id="city" placeholder="City..." list="naa">
+<datalist id="naa">
+<option id="Kullu">Kullu</option>
+<option id="Manali">Manali</option>
+</datalist>
+  <input type="text" id="state" placeholder="State...." list="saa">
+<datalist id="saa">
+<option id="Himachal Pradesh">Himachal Pradesh</option>
+<option id="Mandi">Mandi</option>
+</datalist>
+<button onclick="searchHotels()"><span class="material-symbols-outlined">
+search
+</span></button>
+</div>
+<div class="searchbaar">
+<div class="hotelresult">
+  <ul id="hotel-results" class="hotel-list"><h1 class="n">Sewak</h1><h1 class="m">Solution</h1><h1 class="v">Global</h1></ul>
+</div>
+</div>
+<div class="image">
+<img src="img1.png">
+</div>
+<div class="left-text">
+<h2>This website gives you the best hotels and dormatries near you or by your choice </h2>
+</div>
+<div class="left2-text">
+<h2>This website gives you the best hotels and dormatries near you or by your choice </h2>
+</div>
+<div class="right-text">
+<h2>This website gives you the best hotels and dormatries near you or by your choice </h2>
+</div>
+<div class="video">
+    <video autoplay loop muted>
+        <source src="vid1.MOV" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<div class="bottom-text">
+<h2><span class="material-symbols-outlined" id="move">
+breaking_news
+</span> This website gives you the best hotels and dormatries near you.</h2>
+</div>
+<div class="bottom2-text">
+<h2><span class="material-symbols-outlined" id="move">
+copyright
+</span> Rights Reserved(Sanjay Bodh).</h2>
+</div>
+  <script>
+    // Define hotel data
+    var hotels = [
+      {
+        "name": "Manali Inn",
+        "city": "Manali",
+        "state": "Himachal Pradesh",
+        "image": "building.jpeg",
+        "price": "1200",
+        "address": "Address A, Kullu Manali",
+        "mobile": "1234567890"
+      },
+{
+        "name": "Kullu Inn",
+        "city": "Kullu",
+        "state": "Himachal Pradesh",
+        "image": "hotel_a.jpg",
+        "address": "Address A, Kullu Manali",
+        "price": "100",
+        "mobile": "1234567890"
+      },
+{
+        "name": "Kullu Inn",
+        "city": "Kullu",
+        "state": "Himachal Pradesh",
+        "image": "hotel_a.jpg",
+        "address": "Address A, Kullu Manali",
+        "price": "100",
+        "mobile": "1234567890"
+      },
+{
+        "name": "Kullu Inn",
+        "city": "Kullu",
+        "state": "Himachal Pradesh",
+        "image": "hotel_a.jpg",
+        "address": "Address A, Kullu Manali",
+        "price": "100",
+        "mobile": "1234567890"
+      },
+{
+        "name": "Kullu Inn",
+        "city": "Kullu",
+        "state": "Himachal Pradesh",
+        "image": "hotel_a.jpg",
+        "address": "Address A, Kullu Manali",
+        "price": "100",
+        "mobile": "1234567890"
+      },
+{
+        "name": "Sunflame hotel",
+        "city": "Kullu Manali",
+        "state": "Himachal Pradesh",
+        "image": "coffee.jpeg",
+        "address": "Address A, Kullu Manali",
+        "price": "100",
+        "mobile": "1234567890"
+      },
+      {
+        "name": "Hotel B",
+        "city": "Shimla",
+        "state": "Himachal Pradesh",
+        "image": "hotel_b.jpg",
+        "address": "Address B, Shimla",
+        "price": "150",
+        "mobile": "9876543210"
+      },
+      // Add more hotels as needed
+    ];
+
+    // Function to search hotels based on city and state
+    function searchHotels() {
+      var cityInput = document.getElementById("city").value;
+      var stateInput = document.getElementById("state").value;
+      var hotelResults = document.getElementById("hotel-results");
+      hotelResults.innerHTML = ""; // Clear previous results
+
+      // Validate input
+      if (cityInput.trim() === "" || stateInput.trim() === "") {
+        alert("Please enter both city and state.");
+        return;
+      }
+
+      // Filter hotels based on city and state inputs
+      var filteredHotels = hotels.filter(function(hotel) {
+        return hotel.city.toLowerCase().includes(cityInput.toLowerCase()) &&
+               hotel.state.toLowerCase().includes(stateInput.toLowerCase());
+      });
+
+      // Display filtered hotels
+      for (var i = 0; i < filteredHotels.length; i++) {
+        var hotel = filteredHotels[i];
+        var hotelItem = document.createElement("li");
+        hotelItem.classList.add("hotel-item");
+
+        var fieldset = document.createElement("fieldset");
+        var legend = document.createElement("legend");
+        legend.textContent = hotel.name;
+        fieldset.appendChild(legend);
+
+        var hotelImage = document.createElement("img");
+        hotelImage.src = hotel.image;
+        hotelImage.alt = hotel.name;
+        hotelImage.classList.add("hotel-image");
+
+        var hotelInfo = document.createElement("div");
+        var hotelAddress = document.createElement("p");
+        hotelAddress.textContent = hotel.address;
+
+        var hotelPrice = document.createElement("p");
+        hotelPrice.classList.add("hotel-price");
+        hotelPrice.textContent = "Price for one night: " + hotel.price;
+
+        var hotelMobile = document.createElement("p");
+        hotelMobile.classList.add("hotel-mobile");
+        hotelMobile.textContent = "Mobile: " + hotel.mobile;
+
+        var hotelAddress = document.createElement("p");
+        hotelAddress.classList.add("hotel-address");
+        hotelAddress.textContent = "address: " + hotel.address;
+
+        hotelInfo.appendChild(hotelAddress);
+        hotelInfo.appendChild(hotelPrice);
+        hotelInfo.appendChild(hotelMobile);
+
+        fieldset.appendChild(hotelImage);
+        fieldset.appendChild(hotelInfo);
+
+        hotelItem.appendChild(fieldset);
+
+        hotelResults.appendChild(hotelItem);
+      }
+    }
+  </script>
+</body>
+</html>
